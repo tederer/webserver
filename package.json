@@ -1,0 +1,25 @@
+{
+   "name": "webserver",
+   "version": "0.1.0",
+   "description": "webserver",
+   "private": true,
+   "author": {
+    "name": "Thomas Ederer",
+    "email": "thomas@orchideenvermehrung.at"
+   },
+   "licenses": [
+    {
+      "type": "BSD-3-Clause"
+    }
+   ],
+   
+   "dependencies" : {
+     "express" : "4.x"
+   },
+   
+   "devDependencies": {},
+
+   "engines": {
+      "node": ">=4.4.x"
+   }
+}
