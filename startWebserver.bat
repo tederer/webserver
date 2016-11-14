@@ -1,2 +1,11 @@
 @echo off
-node ./src/start.js D:\Webseite_HTML5\orchideenvermehrung.at\generatedWebpage
+set BASEDIR=%~dp0
+if %BASEDIR:~-1,1% NEQ \ set BASEDIR=%BASEDIR%\
+
+set WEBROOTFOLDER=%BASEDIR%webroot
+
+if not exist %WEBROOTFOLDER% md %WEBROOTFOLDER%
+
+node ./src/start.js %WEBROOTFOLDER%
+
+if errorlevel 1 pause
