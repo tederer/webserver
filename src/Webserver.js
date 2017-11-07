@@ -1,5 +1,6 @@
 ﻿var FileSystem = require('./FileSystem.js');
 var express = require('express');
+var bodyParser = require('body-parser');
 	
 var SERVER_PORT      = 8080;
 var LOGGING_ENABLED  = false;
@@ -70,6 +71,8 @@ var Constructor = function Constructor(webRootFolder) {
    
 
 	this.start = function start() {
+
+      app.use(bodyParser.text());
 	
 		// app.get(path, callback [, callback ...])
 		// Routes HTTP GET requests to the specified path to the specified callback functions. 
@@ -77,6 +80,10 @@ var Constructor = function Constructor(webRootFolder) {
 		app.get('*', logRequest);
 		app.get('*', handleFileRequests );
 		
+      app.post('/cgi-bin/*', function (request, response) {
+        console.log('post request received for ' + request.path);
+        sendOkResponse(response, 'post request received');
+      });
 		
 		console.log('starting webserver ...');
 
